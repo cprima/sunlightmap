@@ -1,10 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Sunlightmap {{mapDateTime | date: 'y-MM-dd HH:mm'}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to SLM!</h2>
+  <div hidden class="ion-canvas">
+    <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #canvasslm></canvas>
+  </div>
+  <div showWhen="portrait" hideWhen="landscape" class="ion-canvas">
+    <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #portraitslm></canvas>
+  </div>
+  <div showWhen="landscape" hideWhen="portrait" class="ion-canvas">
+    <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #landscapeslm></canvas>
+  </div>
+  <button ion-button block reloadMap (click)='reloadMap();'>reload</button>
+  <!-- <p>isOnline: {{conn.is_online}}</p>
+  <p>orientation: {{so.type}}</p>
+  <p>width: {{platform.width()}}</p>
+  <p>height: {{platform.height()}}</p>
+  <img src="../../assets/world_mine_night_solarized_720-360.png" /> -->
 
+  <p>This place intentionally left blank.</p>
 </ion-content>

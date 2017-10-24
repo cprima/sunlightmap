@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ScreenorientationProvider } from '../../providers/screenorientation/screenorientation';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { ConnectivityServiceProvider } from '../../providers/connectivity-service/connectivity-service';
 import { Platform } from 'ionic-angular';
 import { Events } from 'ionic-angular';
@@ -15,6 +16,7 @@ import 'rxjs/add/operator/map';
 export class HomePage {
 
   @ViewChild('canvasslm') canvasslm;
+  @ViewChild('canvasslm') canvasslm2: ElementRef;
   @ViewChild('portraitslm') portraitslm;
   @ViewChild('landscapeslm') landscapeslm;
   slmimgbase64: string = '';
@@ -25,6 +27,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public conn: ConnectivityServiceProvider,
     public so: ScreenorientationProvider,
+    public socialSharing: SocialSharing,
     public platform: Platform,
     public events: Events,
     public http: Http
@@ -80,6 +83,30 @@ export class HomePage {
       console.log("fertsch!")
     });
 
+  }
+
+  public share() {
+    //var basesixtyfour: string = 'R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7';
+    //var context = this.canvasslm.nativeElement.getContext('2d');
+    //https://forum.ionicframework.com/t/getelementbyid-ion-input/43920/11
+    //console.log(this.canvasslm.nativeElement.toDataURL());
+    var options = {
+      message: 'planet @ ' + this.mapDateTime.toISOString(),
+      subject: null,
+      //files: ['data:image/png;base64,' + this.canvasslm.nativeElement.toDataURL()],
+      files: [this.canvasslm.nativeElement.toDataURL()],
+      url: null
+    };
+
+    this.socialSharing.shareWithOptions(options).then(
+      (foo) => {
+        console.log(foo);
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+      }
+      );
   }
 
   private drawMap(width, height) {

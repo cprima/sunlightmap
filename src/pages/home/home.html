@@ -15,11 +15,8 @@
     <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #landscapeslm></canvas>
   </div>
   <button ion-button block reloadMap (click)='reloadMap();'>reload</button>
-  <!-- <p>isOnline: {{conn.is_online}}</p>
-  <p>orientation: {{so.type}}</p>
-  <p>width: {{platform.width()}}</p>
-  <p>height: {{platform.height()}}</p>
-  <img src="../../assets/world_mine_night_solarized_720-360.png" /> -->
 
+  <button ion-button icon-start (click)="share()">
+    <ion-icon name="share"></ion-icon>Share</button>
   <p>This place intentionally left blank.</p>
 </ion-content>

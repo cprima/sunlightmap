@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Sunlightmap {{mapDateTime | date: 'y-MM-dd HH:mm'}}</ion-title>
+    <ion-title>Sunlightmap {{mapDateTime | date: 'y-MM-dd HH:mm (Z)'}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div hidden class="ion-canvas">
-    <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #canvasslm></canvas>
+    <canvas width="720" height="360" #canvasslm></canvas>
   </div>
   <div showWhen="portrait" hideWhen="landscape" class="ion-canvas">
     <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #portraitslm></canvas>

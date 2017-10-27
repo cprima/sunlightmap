@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ../setandroidpaths
+#. ../setandroidpaths
 
 #vim config.xml
 ionic cordova build android --prod --release

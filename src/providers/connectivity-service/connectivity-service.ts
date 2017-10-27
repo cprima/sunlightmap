@@ -98,15 +98,15 @@ export class ConnectivityServiceProvider {
     if (this.onDevice) {
       //https://github.com/apache/cordova-plugin-network-information
       networkType = this.network.type;
-      this.toast.create({
-        message: `You are now ${connectionState} via ${networkType}`,
-        duration: 3000
-      }).present();
+      /*       this.toast.create({
+              message: `You are now ${connectionState} via ${networkType}`,
+              duration: 3000
+            }).present(); */
     } else {
-      this.toast.create({
-        message: `You are now ${connectionState}`,
-        duration: 3000
-      }).present();
+      /*       this.toast.create({
+              message: `You are now ${connectionState}`,
+              duration: 3000
+            }).present(); */
     }
   }
 

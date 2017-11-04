@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sunlightmap {{mapDateTime | date: 'y-MM-dd HH:mm (Z)'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div hidden class="ion-canvas">
+    <canvas width="720" height="360" #canvasslm></canvas>
+  </div>
+  <div showWhen="portrait" hideWhen="landscape" class="ion-canvas">
+    <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #portraitslm></canvas>
+  </div>
+  <div showWhen="landscape" hideWhen="portrait" class="ion-canvas">
+    <canvas width="{{so.pixelsEastWest}}" height="{{so.pixelsNorthSouth}}" #landscapeslm></canvas>
+  </div>
+  
+
+  <button ion-button block icon-start (click)="share()">
+    <ion-icon name="share"></ion-icon>Share</button>
+
+<hr />
+
+<h3>Places</h3>
+
+<button ion-button icon-start right (click)="openModal({foo: 0})">
+<ion-icon name="add"></ion-icon>Add New</button>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let place of places; let i = index">
+ 
+            <ion-item>
+                {{place.name}}
+            </ion-item>
+ 
+            <ion-item-options>
+                <!--<button ion-button icon-only (click)="noop(place)" light>
+                    <ion-icon name="paper"></ion-icon>
+                </button> //-->
+                <button ion-button icon-only (click)="deletePlace(i)" danger>
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+            </ion-item-options>
+ 
+        </ion-item-sliding>
+    </ion-list>
+
+    <div class="row" *ngIf="places?.length > 0">
+    swipe left to access delete click
+    </div>
+
+</ion-content>

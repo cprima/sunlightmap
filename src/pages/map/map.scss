@@ -1,0 +1,46 @@
+page-map {
+
+}
+//body > ion-app > ion-modal > div > ng-component > ion-content > div.scroll-content
+.geocoder-modal {
+    ion-content {
+        &.content {
+            div.scroll-content {
+                top: 20%;
+                left: 10%;
+                width: 80%;
+                height: 60%;
+                overflow:hidden;
+            }
+        }
+
+        &.content-ios {
+            background-color: $base2;
+
+            div.scroll-content {
+                background-color: $base3;
+                border-radius: 13px;
+                padding: 16px;
+            }
+        }
+
+        &.content-md {
+            background-color: $base2;
+            
+            div.scroll-content {
+                background-color: $base3;
+                border-radius: 2px;
+                box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+                padding: 24px;
+            }
+        }
+    }
+}
+
+ion-modal {
+    &.my-modal {
+      div.modal-wrapper {
+          box-shadow: none; // <---- This was the shadow I faced
+      }
+   }
+}

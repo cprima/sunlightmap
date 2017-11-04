@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { MapPage } from '../map/map';
 import { SettingsPage } from '../settings/settings';
 
 @Component({
@@ -10,7 +10,7 @@ import { SettingsPage } from '../settings/settings';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
+  tab1Root = MapPage;
   tab2Root = SettingsPage;
   tab3Root = AboutPage;
   tab4Root = ContactPage;

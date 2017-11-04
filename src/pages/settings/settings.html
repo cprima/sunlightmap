@@ -15,6 +15,18 @@
 
 <ion-content padding>
 
-<p>ToDo: List of place markers, map center.</p>
+  <form [formGroup]="form" *ngIf="settingsReady">
+    <ion-list >
+ <ion-item>
+ <ion-label>Center of the Map</ion-label>
+        <ion-select formControlName="mapcenter">
+          <ion-option value="americas" checked="true">americas</ion-option>
+          <ion-option value="center">center</ion-option>
+          <ion-option value="asia">asia</ion-option>
+        </ion-select>
+ </ion-item>
+    </ion-list>
+ </form>
+
 
 </ion-content>

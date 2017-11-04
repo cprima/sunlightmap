@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.prdv.slm" version="0.0.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="de.prdv.slm" version="0.0.14" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Sunlightmap</name>
     <description>A sunlightmap of the globe.</description>
     <author email="cprior@gmail.com" href="github.com/cprior">Christian Prior</author>
@@ -80,6 +80,8 @@
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.15" />
+    <plugin name="cordova-plugin-nativegeocoder" spec="^2.0.4" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
     <plugin name="cordova-plugin-network-information" spec="^1.3.3" />
     <plugin name="cordova-plugin-screen-orientation" spec="^2.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />

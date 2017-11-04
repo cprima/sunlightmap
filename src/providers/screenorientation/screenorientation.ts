@@ -45,7 +45,7 @@ export class ScreenorientationProvider {
     } else if (soType == 'portrait' || soType == 'portrait-primary' || soType == 'portrait-secondary') {
       this.type = 'portrait'
     }
-    console.log("Orientation Changed: ", this.type, soType);
+    //console.log("Orientation Changed: ", this.type, soType);
   }
 
   setDimensions() {
@@ -53,15 +53,15 @@ export class ScreenorientationProvider {
     this.availableHeigth = this.platform.height() - 12 - 23 - 12 - 56 - 32
 
     if (this.availableHeigth > this.availableWidth) { //portrait
-      console.log("so portrait");
+      //console.log("so portrait");
       this.pixelsEastWest = this.availableWidth;
       this.pixelsNorthSouth = Math.round(this.availableWidth / 2);
     } else if (this.availableHeigth <= this.availableWidth) {
-      console.log("so landscape");
+      //console.log("so landscape");
       this.pixelsNorthSouth = this.availableHeigth;
       this.pixelsEastWest = this.availableHeigth * 2;
     } else {
-      console.log("so else");
+      //console.log("so else");
       this.pixelsEastWest = 360;
       this.pixelsNorthSouth = 180;
     }

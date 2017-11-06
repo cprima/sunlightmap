@@ -1,2 +1,3 @@
-# sunlightmap_app
-An Ionic app to visualize current day and night areas on the globe.
+# sunlightmap
+
+The sourcecode for a mobile app showing day- and nightregions on the planet, the backend code for the map generator and an accompanying website.

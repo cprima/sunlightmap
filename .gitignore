@@ -7,27 +7,25 @@
 *.tmp
 *.tmp.*
 log.txt
-*.sublime-project
-*.sublime-workspace
 .vscode/
 npm-debug.log*
 
 .idea/
-.sourcemaps/
 .sass-cache/
 .tmp/
 .versions/
 coverage/
 dist/
-node_modules/
 tmp/
 temp/
-hooks/
-platforms/
-plugins/
-plugins/android.json
-plugins/ios.json
-www/
+application/physical/mobileapp/.sourcemaps/
+application/physical/mobileapp/node_modules/
+application/physical/mobileapp/hooks/
+application/physical/mobileapp/platforms/
+application/physical/mobileapp/plugins/
+application/physical/mobileapp/plugins/android.json
+application/physical/mobileapp/plugins/ios.json
+application/physical/mobileapp/www/
 $RECYCLE.BIN/
 
 .DS_Store

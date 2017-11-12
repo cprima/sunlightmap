@@ -1,0 +1,10 @@
+runtime: go
+api_version: go1.8
+
+handlers:
+
+- url: /v2/test
+  script: _go_app
+
+- url: /
+  script: _go_app

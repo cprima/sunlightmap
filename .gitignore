@@ -28,6 +28,11 @@ application/physical/mobileapp/plugins/ios.json
 application/physical/mobileapp/www/
 $RECYCLE.BIN/
 
+data/incoming/naturalearth/
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# Jekyll
+_site/

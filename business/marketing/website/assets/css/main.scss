@@ -1,0 +1,70 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+@import
+        "_solarized"
+;
+
+@import
+        "initializr"
+;
+
+
+header h1 a,
+header p,
+header h1 a:link,
+header h1 a:visited {
+    color: $base00;
+    text-decoration: none;
+}
+
+footer nav,
+footer nav ul li h2 a {
+  font-size: 0.8em;
+}
+
+footer nav ul li.nested-header > h2 a {
+  border-bottom: 1px solid $orange;
+}
+footer nav ul li.nested-header > h2 {
+  margin-bottom: 4px;
+}
+
+footer nav,
+footer nav a:link,
+footer nav a:visited {
+    color: $base02;
+    text-decoration: none;
+}
+
+footer nav ul > li {
+  display: block;
+}
+
+footer nav ul > li ul li {
+  display: block;
+}
+
+footer img{
+  display: none;
+}
+
+/* intermediate */
+@media only screen and (min-width: 480px) {
+
+}
+
+/* wide */
+@media only screen and (min-width: 768px) {
+  footer nav ul > li {
+    display: table-cell;
+  }
+  footer nav > ul > li{
+    padding: 0px 12px 2px 6px;
+  }
+  footer img{
+    display: block;
+    float: right;
+  }
+}

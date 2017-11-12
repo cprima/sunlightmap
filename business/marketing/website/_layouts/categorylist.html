@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<!-- http://primalivet.com/2013/11/simple-category-pages-with-vanilla-jekyll/ -->
+<!-- <h1>Simple Category Pages with vanilla Jekyll</h1> -->
+
+{% unless page.content == '' %}
+  <p>{{ page.content }}</p>
+{% endunless %}
+
+
+{% for post in site.categories[page.type] %}
+  <h2><a href="{{ post.url | prepend: site.baseurl }}"">{{ post.title }}</a></h2>
+  <p>{{ post.abstract }} </p>
+{% endfor %}
+
+
+<h2 style="margin-top: 75px; border-top: 1px solid rgb(203, 75, 22); padding-top: 5px;"> Inspired by TOGAF</h2>
+
+<p>Inspired by TOGAF the Helotism project documents major building blocks in a standalone way with only marginally references to the Helotism project as a whole.<p>
+
+<!-- <img src='{{ "/business/planning/images/PRDV_TOGAF-Cube_BusinessDataApplicationTechnology.jpg" | prepend: site.baseurl }}' alt="TOGAF cube."> -->
+
+

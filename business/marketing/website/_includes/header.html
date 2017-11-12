@@ -1,0 +1,34 @@
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="header-container">
+            <header class="wrapper clearfix">
+                <div class="title"><h1 id="title"><a href="{{ "/" | prepend: site.baseurl }}">{{ site.title }}</a></h1>
+                <p id="description">{{ site.description }}</p></div>
+                <script>
+                lang = navigator.language || navigator.userLanguage;
+                var description = document.getElementById("description");
+                if ( lang.indexOf("de") == 0) {
+                  description.innerHTML="{{ site.description_de }}";
+                }
+                </script>
+
+{% if jekyll.environment == "development" %}
+                <nav>
+                    <ul>
+                        <li><a href="{{ "/technology/physical/parts" | prepend: site.baseurl }}">Parts</a></li>
+                        <li><a href="{{ "/application/physical/installation" | prepend: site.baseurl }}">Install</a></li>
+                        <li><a href="#">Usage</a></li>
+                        <li><a href="https://github.com/helotism/helotism/issues">Issues</a></li>
+                    </ul>
+                </nav>
+{% comment %} {% else %} {% endcomment %}
+                <nav>
+                    <ul>
+                        <li><a href="https://github.com/cprior/sunlightmap_app/issues">Issues</a></li>
+                    </ul>
+                </nav>
+{% endif %}
+            </header>
+        </div>

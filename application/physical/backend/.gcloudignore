@@ -1,0 +1,13 @@
+#GAE
+#https://cloud.google.com/sdk/gcloud/reference/topic/gcloudignore
+
+.cfignore
+backend
+bin
+index.md
+Makefile
+manifest.yml
+pkg
+README.md
+src/
+vendor/

@@ -1,0 +1,20 @@
+---
+  applications:
+    - name: sunlightmap-dev
+      memory: 32M
+      command: null #will become ./bin/backend as per GOPACKAGENAME
+      buildpack: https://github.com/cloudfoundry/go-buildpack.git
+      routes:
+      - route: sunlightmap-dev.eu-gb.mybluemix.net
+      env:
+         GOPACKAGENAME: backend
+
+    - name: sunlightmap-prod
+      memory: 32M
+      command: null #will become ./bin/backend as per GOPACKAGENAME
+      buildpack: https://github.com/cloudfoundry/go-buildpack.git
+      routes:
+      - route: sunlightmap-prod.eu-gb.mybluemix.net
+      env:
+         GOPACKAGENAME: backend
+  

@@ -1,0 +1,6 @@
+# .gitignore to keep just .md files
+###################################
+
+*
+!.gitignore
+!*.md

@@ -1,0 +1,7 @@
+#On Bluemix this does not build with a src/ directory, believing GB is used
+src/*
+^backend$
+.gcloudignore
+index.md
+Makefile
+README.md

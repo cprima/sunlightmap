@@ -45,6 +45,7 @@ type sunlightmap struct {
 
 // New returns the sunlightmap struct with default values.
 // The height is always half of the width.
+// visualization has currently only 'static' implemented ('animated' to follow)
 func New(width int, visualization string, zeitpunkte []time.Time) (slm sunlightmap) {
 	slm = sunlightmap{}
 	slm.Width = width - width%2

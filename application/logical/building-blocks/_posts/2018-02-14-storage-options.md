@@ -1,0 +1,7 @@
+---
+layout: post
+title: "Ionic 3: Storage options"
+categories: [ application_logical_building-blocks ]
+date:   2018-02-14 00:00:00 +0100
+abstract: 
+---

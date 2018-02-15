@@ -23,3 +23,25 @@ sass:
 exclude:
   - application/physical/mobileapp
   - application/physical/backend/README.md
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
+  -
+    scope:
+      path: "application/logical/building-blocks"
+      type: "posts" #index.md is of type application-physical_building-blocks
+    values:
+      permalink: /application/logical/building-blocks/:title.html
+      #categories: application-logical_building-blocks
+  -
+    scope:
+      path: "technology/physical/building-blocks"
+      type: "posts" #index.md is of type application-physical_building-blocks
+    values:
+      permalink: /technology/physical/building-blocks/:title.html
+      #categories: application-logical_building-blocks

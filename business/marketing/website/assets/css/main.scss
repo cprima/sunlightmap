@@ -11,6 +11,21 @@
 ;
 
 
+body a,
+body a:link {
+  color: $base01;
+  text-decoration: underline;
+}
+
+body a:visited {
+    color: $base00;
+    text-decoration: underline;
+}
+body a:hover {
+    color: $base00;
+    text-decoration: none;
+}
+
 header h1 a,
 header p,
 header h1 a:link,

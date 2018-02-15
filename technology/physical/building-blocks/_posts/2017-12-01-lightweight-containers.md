@@ -1,8 +1,9 @@
 ---
-title: "Lightweight container"
-categories: [ application-logical_building-blocks ]
+layout: post
+title: "Lightweight container with systemd-nspawn"
+categories: [ technology_physical_building-blocks ]
 date:   2017-12-01 12:00:00 +0100
-abstract: Foo bar baz
+abstract: This repository also contains some (at the time) cutting-edge tests for the geographic information software (https://www.qgis.org/en/site/)[QGIS]. To always install nightly builds of version 2.99 (to become QGIS 3) the approach was to use lightweight containers with systemd-nspawn. After all, a container is a kernel namespace and cgroups on a filesystem.
 ---
 
 ## Container with systemd-nspawn

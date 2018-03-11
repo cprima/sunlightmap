@@ -1,5 +1,7 @@
 
-ANDROID_HOME=/opt/Android/Sdk
+
+export ANDROID_HOME=/opt/Android/Sdk
+export PATH := $(ANDROID_HOME):$(ANDROID_HOME)/tools:$(ANDROID_HOME)/platform-tools:$(PATH)
 
 
 all: checkpath adb
@@ -15,9 +17,10 @@ adb:
 	sudo adb start-server
 	adb devices
 
-.PHONY: build-android
-build-android:
+.PHONY: build-android-prod
+build-android-prod:
 	ionic cordova build android --prod --release
-	jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks platforms/android/build/outputs/apk/release/android-release-unsigned.apk my-alias
-	rm slm.apk
-	/opt/Android/Sdk/build-tools/27.0.3/zipalign -v 4 platforms/android/build/outputs/apk/release/android-release-unsigned.apk slm.apk
+	echo "G. (2018)"
+	jarsigner -sigalg SHA1withRSA -digestalg SHA1 -keystore slm-release-key.jks platforms/android/build/outputs/apk/release/android-release-unsigned.apk slm
+	$(ANDROID_HOME)/build-tools/27.0.3/zipalign -f -v 4 platforms/android/build/outputs/apk/release/android-release-unsigned.apk slm.apk
+

@@ -38,3 +38,8 @@ UserInterfaceState.xcuserstate
 _site/
 
 Gemfile.lock
+
+application/physical/mobileapp/*.jks
+application/physical/mobileapp/google-services.json
+
+application/physical/mobileapp/slm.apk

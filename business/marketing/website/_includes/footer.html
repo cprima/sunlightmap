@@ -7,56 +7,29 @@
                   <ul>
                       <li class="nested-header"><h2><a href="#">project</a></h2>
                           <ul>
-<!--                              <li><a href="/application/physical/installation">Installation</a></li>-->
-                              <li><a href="https://github.com/cprior/sunlightmap_app">Repository</a></li>
+                              <li><a href="https://github.com/cprior/sunlightmap">Repository</a></li>
                               <li><a href="https://github.com/cprior/sunlightmap_app/issues">Issues</a></li>
                               <li><a href="https://play.google.com/store/apps/details?id=de.prdv.slm">Play Store</a></li>
-                              <!--<li><a href="{{ "/business/marketing/website/feed.xml" | prepend: site.baseurl }}">RSS feed of this site</a></li>
-                              <li><a href="{{ "/impressum.html" | prepend: site.baseurl }}">Impressum (de)</a></li>-->
+                              <!--<li><a href="{{ "/business/marketing/website/feed.xml" | prepend: site.baseurl }}">RSS feed of this site</a></li>-->
+                              <li><a href="{{ "/impressum.html" | prepend: site.baseurl }}">Impressum (de)</a></li>
                           </ul>
                       </li>
                       <li class="nested-header biz"><h2><a href="#">biz</a></h2>
                           <ul>
                               <li><a href="{{ "/business/marketing/media/travel" | prepend: site.baseurl }}">media</a></li>
-                              <!--<li><a href="#">roadmap</a></li>
-                              <li><a href="#">building blocks</a></li>//-->
                           </ul>
                       </li>
-{% if jekyll.environment == "development" %}
-                      <li class="nested-header dat"><h2><a href="#">dat</a></h2>
-                          <ul>
-                              <li><a href="#">visualization</a></li>
-                              <li><a href="#">building blocks</a></li>
-                          </ul>
-                      </li>
-{% endif %}
                       <li class="nested-header app"><h2><a href="#">app</a></h2>
                           <ul>
-                              <!--<li><a href="{{ "/application/logical/" | prepend: site.baseurl }}">logical</a></li>-->
+                              <li><a href="{{ "/application/logical/building-blocks" | prepend: site.baseurl }}">logical</a></li>
                               <li><a href="{{ "/application/physical/" | prepend: site.baseurl }}">physical</a></li>
-                              <!--<li><a href="{{ "/application/physical/building-blocks" | prepend: site.baseurl }}">building blocks</a></li>-->
                           </ul>
                       </li>
-{% if jekyll.environment == "development" %}
                       <li class="nested-header tec"><h2><a href="{{ "/technology" | prepend: site.baseurl }}">tec</a></h2>
                           <ul>
-                              <li><a href="{{ "/technology/logical" | prepend: site.baseurl }}">logical</a></li>
-                              <li><a href="{{ "/technology/physical" | prepend: site.baseurl }}">physical</a></li>
-                              <li><a href="{{ "/technology/physical/building-blocks" | prepend: site.baseurl }}">building blocks</a></li>
+                              <li><a href="{{ "/technology/physical/building-blocks" | prepend: site.baseurl }}">physical</a></li>
                           </ul>
                       </li>
-{% comment %} {% else %} {% endcomment %}
-                      <li class="nested-header app"><h2><a href="#">app</a></h2>
-                          <ul>
-                              <li><a href="{{ "/application/physical/building-blocks" | prepend: site.baseurl }}">building blocks</a></li>
-                          </ul>
-                      </li>
-                      <li class="nested-header tec"><h2><a href="#">tec</a></h2>
-                          <ul>
-                              <li><a href="{{ "/technology/physical/building-blocks" | prepend: site.baseurl }}">building blocks</a></li>
-                          </ul>
-                      </li>
-{% endif %}
                   </ul>
                 </nav>
             </footer>

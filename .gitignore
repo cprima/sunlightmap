@@ -36,3 +36,5 @@ UserInterfaceState.xcuserstate
 
 # Jekyll
 _site/
+
+Gemfile.lock

@@ -51,7 +51,7 @@ gae-dev:
 	gcloud config configurations activate sunlightmapdev
 	# gcloud config set project sunlightmapdev
 	# https://cloud.google.com/sdk/gcloud/reference/app/deploy
-	GOPATH=$(GOPATH) gcloud app deploy app.yaml --stop-previous-version --quiet --verbosity=info #--no-promote
+	GOPATH=$(GOPATH) gcloud app deploy app.yaml --stop-previous-version --quiet #--verbosity=info #--no-promote
 	#
 	#https://console.cloud.google.com/appengine/versions?project=sunlightmapdev
 	#

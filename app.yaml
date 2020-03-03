@@ -1,0 +1,27 @@
+runtime: go112
+#api_version: go1.8
+service: default
+
+default_expiration: "5m"
+
+liveness_check:
+  path: "/"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+# automatic_scaling:
+#   min_idle_instances: 5
+#   max_idle_instances: automatic  # default value
+#   min_pending_latency: 30ms  # default value
+#   max_pending_latency: automatic
+#   max_concurrent_requests: 50
+
+handlers:
+- url: /v2/test
+  script: auto
+
+- url: /
+  script: auto
+

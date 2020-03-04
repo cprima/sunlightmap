@@ -1,5 +1,3 @@
-module github.com/cprior/sunlightmap/application/physical/backend
+module github.com/cprior/sunlightbackend
 
 go 1.12
-
-require github.com/cprior/sunlightlib v1.1.4

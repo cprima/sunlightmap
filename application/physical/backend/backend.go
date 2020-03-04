@@ -2,12 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"image"
-	"image/png"
 	"io/ioutil"
 	"net/http"
 	"strings"
-	"sunlightmap"
 	"time"
 )
 
@@ -30,10 +27,10 @@ type Request struct {
 
 func init() {
 	//If sunlightmap.go and vec.go are packaged standalone this needs to go into an sunlightmap.init()
-	image.RegisterFormat("png", "png", png.Decode, png.DecodeConfig)
+	//image.RegisterFormat("png", "png", png.Decode, png.DecodeConfig)
 
 	http.HandleFunc("/v2/test", handler)
-	//http.HandleFunc("/slm", sunlightmap.SampleHandlerTest)
+	http.HandleFunc("/v3/solarized_720-360", handler)
 	http.HandleFunc("/", handlerIndex)
 }
 
@@ -85,13 +82,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//slm := sunlightmap.NewStatic(720, time.Now().Local())
-	slm := sunlightmap.NewStatic(720, time.Now().Local())
-	slm.DaylightImageFilename = "world_mine_day_solarized_720-360_fixme-compressor.png"
-	slm.NighttimeImageFilename = "world_mine_night_solarized_720-360_fixme-compressor.png"
+	slm := NewStatic(720, time.Now().Local())
+	slm.DaylightImageFilename = "world_mine_day_solarized_720-360_compressor.png"
+	slm.NighttimeImageFilename = "world_mine_night_solarized_720-360_compressor.png"
 	//slm.Now()
 
 	//retval.Imgbase64, _ = sunlightmap.ReturnStaticPngBase64(&slm)
-	retval.Imgbase64, _ = sunlightmap.ReturnStaticPngBase64(&slm)
+	retval.Imgbase64, _ = ReturnStaticPngBase64(&slm)
 	retval.Width = slm.Width
 	retval.Height = slm.Height
 	retval.Success = "ok"

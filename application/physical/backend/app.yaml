@@ -1,5 +1,5 @@
-runtime: go
-api_version: go1.8
+runtime: go112
+#api_version: go1.8
 service: default
 
 default_expiration: "5m"
@@ -20,17 +20,8 @@ liveness_check:
 
 handlers:
 - url: /v2/test
-  script: _go_app
+  script: auto
 
 - url: /
-  script: _go_app
+  script: auto
 
-skip_files:
-- ^backend$
-- .cfignore
-- index.md
-- main.go
-- Makefile
-- manifest.yml
-- README.md
-- vendor/

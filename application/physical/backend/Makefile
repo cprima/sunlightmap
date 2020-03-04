@@ -3,8 +3,8 @@ GOPATH=$(CURDIR)
 .PHONY: all
 all: clean test build
 
-myvendor:
-	cp -Rf src/sunlightmap vendor/
+#myvendor:
+#	cp -Rf src/sunlightmap vendor/
 
 .PHONY: clean
 clean:
@@ -12,7 +12,7 @@ clean:
 	rm -f backend
 
 test:
-	go test -v sunlightmap
+	go test -v
 
 build:
 	GOOS=linux GOARCH=amd64 go build -o backend main.go backend.go
@@ -51,7 +51,11 @@ gae-dev:
 	gcloud config configurations activate sunlightmapdev
 	# gcloud config set project sunlightmapdev
 	# https://cloud.google.com/sdk/gcloud/reference/app/deploy
-	GOPATH=$(GOPATH) gcloud app deploy app.yaml --stop-previous-version --quiet #--verbosity=info #--no-promote
+	gcloud app deploy app.yaml --no-promote #--stop-previous-version --quiet #--verbosity=info #--no-promote
 	#
 	#https://console.cloud.google.com/appengine/versions?project=sunlightmapdev
 	#
+
+gae:
+	gcloud config configurations activate sunlightmap
+	gcloud app deploy app.yaml --no-promote

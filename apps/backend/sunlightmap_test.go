@@ -61,6 +61,24 @@ func TestCaclulateASCII(t *testing.T) {
 
 }
 
+func TestSubsolarPoint_Bounds(t *testing.T) {
+	cases := []time.Time{
+		time.Date(2017, 10, 24, 17, 30, 0, 0, time.UTC),
+		time.Date(2026, 3, 20, 12, 0, 0, 0, time.UTC),
+		time.Date(2026, 6, 21, 0, 0, 0, 0, time.UTC),
+		time.Date(2026, 12, 21, 6, 0, 0, 0, time.UTC),
+	}
+	for _, ts := range cases {
+		lat, lon := SubsolarPoint(ts)
+		if lat < -23.5 || lat > 23.5 {
+			t.Fatalf("%v: expected subsolar latitude within +-23.5, got %v", ts, lat)
+		}
+		if lon < -180 || lon > 180 {
+			t.Fatalf("%v: expected subsolar longitude within +-180, got %v", ts, lon)
+		}
+	}
+}
+
 func ExampleReturnStaticPngBase64() {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")

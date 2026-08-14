@@ -3,7 +3,7 @@
 TL;DR: Symlink from $GOPATH/src/backend and $GOPATH/src/sunlightmap
 
 {% if jekyll.environment != "development" %}
-[![GoDoc](https://godoc.org/github.com/cprior/sunlightmap/application/physical/backend?status.svg)](https://godoc.org/github.com/cprior/sunlightmap/application/physical/backend)
+[![GoDoc](https://godoc.org/github.com/cprior/sunlightmap/apps/backend?status.svg)](https://godoc.org/github.com/cprior/sunlightmap/apps/backend)
 {% endif %}
 
 Directory with the backend code, ready for
@@ -134,25 +134,27 @@ GOPATH=$(pwd) dev_appserver.py app.yaml
 
 ### Serving locally ###
 
-The Ionic 3 app in this repo has a switch to detect the platform and request from localhost or the backend server:
+The API contract is documented in [`openapi.yaml`](./openapi.yaml). The current endpoints are:
 
-```javascript
-    //caveat: Device toolbar in Chrome makes platform 'android' or 'ios'!
-    let url = 'http://localhost:8080/v2/test'
-    if (this.platform.is('android') || this.platform.is('ios')) {
-      url = 'http://sunlightmap.appspot.com/v2/test';
-    }
+```
+GET http://localhost:8080/api/v4/map?width=720&requestedAt=2006-01-02T15:04:05Z07:00
+GET http://localhost:8080/api/v4/map.png?width=720&requestedAt=2006-01-02T15:04:05Z07:00
 ```
 
-It is not the Go way to manipulate `$GOPATH` but this eases deployment to GAE Google Apps Engine a bit.
+Both parameters are optional. `/api/v4/map` returns metadata (plus the image inlined as base64); `/api/v4/map.png` returns the raw PNG bytes. The frontend's environment config picks the local vs. deployed base URL — see `apps/webapp/`.
 
 Building the Go package will serve requests locally on port 8080, listening on any interface:
 
 ```bash
-cd application/physical/backend
-GOPATH=$(pwd) go build -o backend main.go backend.go
+cd apps/backend
+go build -o backend .
 ./backend
-#PORT=8081 GOPATH=$(pwd) go run main.go backend.go
+```
+
+Or via the container (no local Go toolchain needed), from the repo root:
+
+```bash
+docker compose up backend
 ```
 
 The default port ist 8080 but can be changed with an environment variable.

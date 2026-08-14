@@ -59,3 +59,10 @@ gae-dev:
 gae:
 	gcloud config configurations activate sunlightmap
 	gcloud app deploy app.yaml --no-promote
+
+#Local dev via container
+docker-build:
+	docker compose -f ../../docker-compose.yml build backend
+
+docker-run:
+	docker compose -f ../../docker-compose.yml up backend

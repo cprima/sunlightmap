@@ -13,16 +13,17 @@ plugins:
   - jekyll-feed
 
 source:        .
-layouts_dir:  ./business/marketing/website/_layouts
-includes_dir: ./business/marketing/website/_includes
-destination:  ./business/marketing/website/_site
+layouts_dir:  ./web/_layouts
+includes_dir: ./web/_includes
+destination:  ./web/_site
 data_dir:     ./data
 sass:
-    sass_dir: ./business/marketing/website/assets/_sass
+    sass_dir: ./web/assets/_sass
 
 exclude:
-  - application/physical/mobileapp
-  - application/physical/backend/README.md
+  - apps
+  - packages
+  - docker-compose.yml
 
 defaults:
   -

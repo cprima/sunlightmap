@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: sunlightmap API
+  version: "4.0.0"
+paths:
+  /api/v4/map:
+    description: >
+      Only GET and OPTIONS are implemented. Any other method
+      (POST, PUT, DELETE, PATCH, ...) returns 405 Method Not Allowed with an
+      ErrorResponse body.
+    get:
+      summary: Get metadata (and inlined base64 image) for the current day/night overlay
+      parameters:
+        - $ref: '#/components/parameters/Width'
+        - $ref: '#/components/parameters/RequestedAt'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MapResponse'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error generating the map
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    options:
+      summary: CORS preflight
+      description: >
+        Returns 204 with Access-Control-Allow-* headers set. No body.
+      responses:
+        '204':
+          description: No Content
+  /api/v4/map.png:
+    description: >
+      Only GET and OPTIONS are implemented. Any other method
+      (POST, PUT, DELETE, PATCH, ...) returns 405 Method Not Allowed with an
+      ErrorResponse body.
+    get:
+      summary: Get the current day/night overlay as a raw PNG
+      description: >
+        Same params as /api/v4/map. Intended for direct use in <img src>,
+        canvas drawImage, or fetch()+blob — no JSON/base64 decoding needed.
+      parameters:
+        - $ref: '#/components/parameters/Width'
+        - $ref: '#/components/parameters/RequestedAt'
+      responses:
+        '200':
+          description: OK
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error generating the map
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    options:
+      summary: CORS preflight
+      description: >
+        Returns 204 with Access-Control-Allow-* headers set. No body.
+      responses:
+        '204':
+          description: No Content
+components:
+  parameters:
+    Width:
+      name: width
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 24
+        maximum: 1440
+      description: >
+        Requested image width in pixels. Defaults to 720.
+        Height is not independently settable: it is always derived as
+        width/2 by the underlying renderer and returned in the response.
+    RequestedAt:
+      name: requestedAt
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: RFC3339 timestamp. Defaults to server "now" if omitted.
+  schemas:
+    MapResponse:
+      type: object
+      required: [generator, image, lighting, sources, generatedAt, requestedAt]
+      properties:
+        generator:
+          $ref: '#/components/schemas/GeneratorInfo'
+        image:
+          $ref: '#/components/schemas/ImageInfo'
+        lighting:
+          $ref: '#/components/schemas/Lighting'
+        sources:
+          $ref: '#/components/schemas/SourceInfo'
+        generatedAt:
+          type: string
+          format: date-time
+        requestedAt:
+          type: string
+          format: date-time
+    GeneratorInfo:
+      type: object
+      required: [name, version]
+      properties:
+        name:
+          type: string
+          example: sunlightmap-backend
+        version:
+          type: string
+          example: "4.0.0"
+    ImageInfo:
+      type: object
+      required: [url, base64, width, height, mimeType]
+      properties:
+        url:
+          type: string
+          description: Relative URL to GET the same image as raw bytes (/api/v4/map.png).
+        base64:
+          type: string
+          format: byte
+          description: The same PNG, inlined as base64, for single-round-trip callers.
+        width:
+          type: integer
+          example: 720
+        height:
+          type: integer
+          example: 360
+          description: Always width/2; not independently requestable.
+        mimeType:
+          type: string
+          example: image/png
+    Lighting:
+      type: object
+      required: [subsolarLatitude, subsolarLongitude, method]
+      properties:
+        subsolarLatitude:
+          type: number
+          format: double
+          minimum: -23.5
+          maximum: 23.5
+        subsolarLongitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+        method:
+          type: string
+          example: cosine-approximation
+          description: >
+            Derived from the same sun-direction vector used to render the
+            overlay (see sunlightmap.go SubsolarPoint). A stylized
+            declination/hour-angle approximation, not an ephemeris-grade
+            astronomical calculation.
+    SourceInfo:
+      type: object
+      required: [dayImageId, nightImageId]
+      properties:
+        dayImageId:
+          type: string
+        nightImageId:
+          type: string
+    ErrorResponse:
+      type: object
+      required: [error, code]
+      properties:
+        error:
+          type: string
+        code:
+          type: string

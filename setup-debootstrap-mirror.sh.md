@@ -2,4 +2,4 @@
 title: Setup a debootstrap mirror
 ---
 
-{% include_relative application/physical/scripts/setup-debootstrap-cache.sh %}
+{% include_relative apps/gis/scripts/setup-debootstrap-cache.sh %}

@@ -1,8 +1,12 @@
 # Organization of this repository
 
-This repocontains the full project and is therefore in an usual structure. When combining IT and business aspects (and a website is marketing is business) there exists a vey helpful method with [TOGAF](www.opengroup.org/subjectareas/enterprise/togaf "The TOGAF® framework is the de facto global standard for Enterprise Architecture.").
+The deployable code lives in a conventional monorepo layout:
 
-What I take out of TOGAF is the vocabular which helps me switch into a high-level view on my projects when I am in the trenches of building blocks. This vocabulary structures my thinking and I chose many naming conventions from my understanding of the method. With that as a reference here the pointers into this repository:
+- `apps/backend` — the Go API
+- `apps/webapp` — the PWA frontend (in progress; replaces `apps/mobileapp-legacy`, the retired Ionic 3/Cordova app kept around for reference during migration)
+- `apps/gis` — geodata scripts/tooling
+
+The business/marketing/architecture documentation below still uses a [TOGAF](www.opengroup.org/subjectareas/enterprise/togaf "The TOGAF® framework is the de facto global standard for Enterprise Architecture.")-flavored structure (`business/`, `technology/`, `application/logical/`) — this part of the tree also doubles as the source for the project's Jekyll site (see `_config.yml`), so it's kept separate from the `apps/` code layout rather than merged into it.
 
 # ![biz][dot-app-16] applications deployed
 
@@ -10,15 +14,15 @@ These applications are deployed within the solution, are specificially written f
 
 ## ![biz][dot-app-16] backend
 
-[./application/physical/backend](./application/physical/backend)
+[./apps/backend](./apps/backend)
 
 ## ![biz][dot-app-16] mobile application
 
-[./application/physical/mobileapp](./application/physical/mobileapp)
+[./apps/mobileapp-legacy](./apps/mobileapp-legacy) (being replaced by `./apps/webapp`)
 
 ## ![biz][dot-app-16] geodata
 
-[./application/physical/GIS](./application/physical/GIS)
+[./apps/gis](./apps/gis)
 
 # ![biz][dot-biz-16] business
 
@@ -33,7 +37,7 @@ I am a business administration guy by trade and can't help but spot "biz" where 
 
 # ![biz][dot-dat-16] data
 
-This folder is typically used by scripts in ./application/physical to hold data in a predictable place. I tend to do a lot of curl'ing with checks for If-Modified-Since to be nice to the (mirror) servers.
+This folder is typically used by scripts in ./apps to hold data in a predictable place. I tend to do a lot of curl'ing with checks for If-Modified-Since to be nice to the (mirror) servers.
 
 # ![biz][dot-tec-16] technology
 

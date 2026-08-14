@@ -1,5 +1,4 @@
-runtime: go112
-#api_version: go1.8
+runtime: go122
 service: default
 
 default_expiration: "5m"
@@ -18,10 +17,4 @@ liveness_check:
 #   max_pending_latency: automatic
 #   max_concurrent_requests: 50
 
-handlers:
-- url: /v2/test
-  script: auto
-
-- url: /
-  script: auto
 

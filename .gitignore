@@ -18,14 +18,14 @@ coverage/
 dist/
 tmp/
 temp/
-application/physical/mobileapp/.sourcemaps/
-application/physical/mobileapp/node_modules/
-application/physical/mobileapp/hooks/
-application/physical/mobileapp/platforms/
-application/physical/mobileapp/plugins/
-application/physical/mobileapp/plugins/android.json
-application/physical/mobileapp/plugins/ios.json
-application/physical/mobileapp/www/
+apps/mobileapp-legacy/.sourcemaps/
+apps/mobileapp-legacy/node_modules/
+apps/mobileapp-legacy/hooks/
+apps/mobileapp-legacy/platforms/
+apps/mobileapp-legacy/plugins/
+apps/mobileapp-legacy/plugins/android.json
+apps/mobileapp-legacy/plugins/ios.json
+apps/mobileapp-legacy/www/
 $RECYCLE.BIN/
 
 data/incoming/naturalearth/
@@ -39,7 +39,7 @@ _site/
 
 Gemfile.lock
 
-application/physical/mobileapp/*.jks
-application/physical/mobileapp/google-services.json
+apps/mobileapp-legacy/*.jks
+apps/mobileapp-legacy/google-services.json
 
-application/physical/mobileapp/slm.apk
+apps/mobileapp-legacy/slm.apk

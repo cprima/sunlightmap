@@ -245,23 +245,54 @@ func getBaseImage(slm *sunlightlib, variant string, filename string) (retimg ima
 	return
 }
 
-// ReturnStaticPngBase64 is called with a sunlightlib struct and
-// returns a base64 encoded string of a single sunlightlib in png format.
-func ReturnStaticPngBase64(slm *sunlightlib) (retval string, err error) {
+// SubsolarPoint returns the approximate subsolar latitude/longitude in
+// degrees for the given moment, derived from the same sun-direction vector
+// (pointingFromEarthToSun) that mergeImages2 uses to render the day/night
+// overlay. This is the app's existing declination/hour-angle approximation
+// (see newSingle), not an ephemeris-grade calculation.
+func SubsolarPoint(zeitpunkt time.Time) (lat, lon float64) {
+	slm := NewStatic(2, zeitpunkt)
+	sslm := newSingle(&slm, zeitpunkt)
+	v := sslm.pointingFromEarthToSun
+
+	y := v.y
+	if y > 1 {
+		y = 1
+	} else if y < -1 {
+		y = -1
+	}
+
+	lat = math.Asin(y) * 180 / math.Pi
+	lon = math.Atan2(v.x, v.z) * 180 / math.Pi
+	return
+}
+
+// ReturnStaticPng is called with a sunlightlib struct and returns the raw
+// PNG bytes of a single sunlightlib.
+func ReturnStaticPng(slm *sunlightlib) (retval []byte, err error) {
 
 	buff := bytes.Buffer{}
 	slm.visualization = "static"
-	//for _, value := range slm.zeitpunkte {
 
 	sslm := newSingle(slm, slm.zeitpunkte[0])
 	img, err := mergeImages2(slm, &sslm)
 	if err != nil {
-		panic(err) //fixme
+		return nil, err
 	}
-	png.Encode(&buff, img)
-	retval = base64.StdEncoding.EncodeToString(buff.Bytes())
-	return
+	if err := png.Encode(&buff, img); err != nil {
+		return nil, err
+	}
+	return buff.Bytes(), nil
+}
 
+// ReturnStaticPngBase64 is called with a sunlightlib struct and
+// returns a base64 encoded string of a single sunlightlib in png format.
+func ReturnStaticPngBase64(slm *sunlightlib) (retval string, err error) {
+	imgBytes, err := ReturnStaticPng(slm)
+	if err != nil {
+		return "", err
+	}
+	return base64.StdEncoding.EncodeToString(imgBytes), nil
 }
 
 /* // SampleHandlerTest may be used with a browser to test the package.

@@ -7,3 +7,10 @@ source "https://rubygems.org"
 gem 'github-pages', group: :jekyll_plugins
 
 gem "jekyll", "~> 3.6.2"
+
+# Ruby 3.3+ dropped these from the default stdlib gems; kramdown 1.x (pulled
+# in by github-pages) still needs them. Local build/verify tooling only —
+# does not change what GitHub Pages deploys.
+gem "rexml"
+gem "base64"
+gem "bigdecimal"
